@@ -298,5 +298,4 @@ ${W.sec("Practical: let peace flow in your bloodstream",null,`<div class="panel"
   $$("#bvGrid .card").forEach(c=>c.addEventListener("click",()=>{const b=BLOOD_V[+c.dataset.i];openDrawer(`<span class="ref">${b.r}</span><h2>${b.k}</h2><p style="color:var(--fg)">${b.d}</p>`)}));
 }};
 
-window.MC_BOOT();
 })();
