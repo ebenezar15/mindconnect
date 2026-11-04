@@ -24,8 +24,12 @@ window.ROOMS_META=[
  {id:"faith",n:"10",grp:"Faith",label:"Faith that moves mountains"},
  {id:"adam",n:"11",grp:"Faith",label:"Why renew after Jesus?"},
  {id:"ot",n:"12",grp:"Faith",label:"OT pioneers"},
- {id:"rewire",n:"13",grp:"Practice",label:"Rewire studio"},
- {id:"refs",n:"14",grp:"Practice",label:"Sources & sister apps"}
+ {id:"design",n:"13",grp:"Pain & suffering",label:"Designed for life"},
+ {id:"pain",n:"14",grp:"Pain & suffering",label:"How pain works"},
+ {id:"message",n:"15",grp:"Pain & suffering",label:"The message of pain"},
+ {id:"birth",n:"16",grp:"Pain & suffering",label:"Childbirth without the curse"},
+ {id:"rewire",n:"17",grp:"Practice",label:"Rewire studio"},
+ {id:"refs",n:"18",grp:"Practice",label:"Sources & sister apps"}
 ];
 const R=window.ROOMS={};
 
@@ -63,7 +67,11 @@ ${W.sec("The questions this app answers","Pick any door. Each room has a living 
    ["life","Does what I believe shape my life and lifespan?","Expectation, long life, immortality, and a renewed mind."],
    ["faith","Is Mark 11:23-24 true? Why do some oppose it?","The faith of God, doubt as a divided heart, and the opposition map."],
    ["adam","Why renew the mind after Jesus, and not with Adam?","From Eden to Pentecost: why renewal needed a new heart first."],
-   ["ot","Who walked in this before Christ?","Abraham, Joseph, Caleb, Hannah, David, Elijah, Daniel and more."]
+   ["ot","Who walked in this before Christ?","Abraham, Joseph, Caleb, Hannah, David, Elijah, Daniel and more."],
+   ["design","Was my body designed for sickness and death?","Eden to resurrection, repair systems, and how stress wears down telomeres."],
+   ["pain","How is pain made? How does suffering form?","Animated pain pathway, a danger meter, and the layers of suffering."],
+   ["message","If God isn't the author of pain, what is it saying?","What Jesus did with pain, Paul Brand's 'gift of pain', and decoding its message."],
+   ["birth","Is childbirth pain God's curse?","The Hebrew of Gen 3:16, the hormones of birth, and gentler delivery."]
  ].map(([h,b,s])=>`<a href="#${h}"><b>${b}</b><span>${s}</span></a>`).join("")}
 </div>`)}
 <section class="grid two">

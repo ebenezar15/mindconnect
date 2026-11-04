@@ -224,7 +224,7 @@ const WINDOW=[
 ];
 const RENEW=[["R","Recognise","Notice the feeling, body signal or reaction. 'Something's stirred.'"],["E","Expose","Ask: What am I believing? 'Who told you that?' (Gen 3:11)"],["N","Name the need","Behind the lie is a real need: safety, worth, love, rest."],["E","Exchange","Receive the Father's truth for the lie, with Scripture."],["W","Walk it out","One small action today that agrees with the truth."]];
 R.rewire={html:()=>`
-${W.head("Room 13 · Rewire studio","Your daily renewal toolkit","Check in, exchange lies for truth, breathe with Scripture, and track 40 days. Everything you save stays in this browser.")}
+${W.head("Room 17 · Rewire studio","Your daily renewal toolkit","Check in, exchange lies for truth, breathe with Scripture, and track 40 days. Everything you save stays in this browser.")}
 <section class="grid two">
  <div class="panel" style="display:flex;flex-direction:column;gap:12px"><span class="mono muted">Step 1 · Window of tolerance check-in</span><h3>How are you right now?</h3>
   <div class="pills" id="winPills">${WINDOW.map((w,i)=>`<button type="button" class="pill" data-i="${i}" aria-pressed="false">${w.k}</button>`).join("")}</div>
@@ -283,7 +283,7 @@ ${W.sec("Use cases: step-by-step plans","Practical, Scripture-backed plans for c
 
 /* ======================= 14 REFS ======================= */
 R.refs={html:()=>`
-${W.head("Room 14 · Sources & sister apps","Where this comes from","MindConnect sits alongside your Relational Gospel Atlas and Rewiring apps. Science claims are summarised from published research; where evidence is debated, the room says so.")}
+${W.head("Room 18 · Sources & sister apps","Where this comes from","MindConnect sits alongside your Relational Gospel Atlas and Rewiring apps. Science claims are summarised from published research; where evidence is debated, the room says so.")}
 <section class="grid">
  <a class="card click" href="${window.MC.LINKS.atlas}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><span class="tag g">Sister app</span><h4>Relational Gospel Atlas ↗</h4><p>Legal vs union lens across every major theme: Jesus as perfect theology, Adam undone, identity and heart healing, habits and help.</p></a>
  <a class="card click" href="${window.MC.LINKS.rewiring}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><span class="tag l">Sister app</span><h4>Rewiring ↗</h4><p>Daily check-in, 90-day Regulated Mind plan, studies on belief formation, shame, new creation and union.</p></a>
@@ -306,10 +306,21 @@ ${W.sec("Research referenced",null,`<div class="panel">${W.list([
  "Hasher et al. (1977) and later work: the illusory truth effect",
  "Lieberman et al. (2007): affect labelling reduces amygdala response",
  "Kühn & Gallinat (2014) and Love et al. (2015): pornography, reward circuitry, and the ongoing debate",
- "Wood, Perunovic & Lee (2009): why some positive self-statements backfire, so use believable statements"])}</div>`)}
+ "Wood, Perunovic & Lee (2009): why some positive self-statements backfire, so use believable statements",
+ "Epel, E. et al. (2004), <i>PNAS</i> 101(49): accelerated telomere shortening in response to life stress",
+ "Raja, S. et al. (2020): the revised IASP definition of pain",
+ "Melzack, R. & Wall, P. (1965), <i>Science</i>: gate control theory of pain",
+ "Moseley, G.L. & Butler, D. <i>Explain Pain</i>; Moseley, TEDxAdelaide 'Why things hurt'",
+ "Coan, J. et al. (2006): hand-holding and the neural response to threat",
+ "Brand, P. & Yancey, P. <i>The Gift of Pain</i> (Pain: The Gift Nobody Wants), and <i>Fearfully and Wonderfully Made</i>",
+ "Madden, K. et al. (2016), Cochrane CD009356: hypnosis for pain management during labour",
+ "Bohren, M. et al. (2017), Cochrane: continuous support for women during childbirth; Cluett et al. (2018), Cochrane: immersion in water in labour",
+ "Dick-Read, G. <i>Childbirth Without Fear</i> (1942), with later critiques",
+ "Postel, T. (2013), <i>Sexologies</i>: midwife survey on pleasurable birth experiences",
+ "Buckley, S. (2015) <i>Hormonal Physiology of Childbearing</i> (Childbirth Connection)",
+ "Simpson, J.Y. (1847) <i>Answer to the Religious Objections…</i>; Anaesthesia (2016) on later embellishment of that history; Mowczko, M. on ʿiṣṣābôn in Gen 3:16"])}</div>`)}
 ${W.sec("Theological voices behind the relational lens",null,`<p class="muted" style="max-width:70ch">Baxter Kruger, T.F. Torrance, Irenaeus (recapitulation), Brad Jersak, Greg Boyd, Brian Zahnd, Michael Ramsey ("God is Christlike and in him is no un-Christlikeness at all"), Francois du Toit, Curt Thompson (<i>Anatomy of the Soul</i>), and Bill Johnson on healing. Diverse voices; not all agree with each other on every point.</p>`)}
 <p class="note">MindConnect is an educational and devotional tool. It does not diagnose or treat any condition. Keep working with doctors, counsellors and your church community; God uses all of them.</p>
 `};
 
-window.MC_BOOT();
 })();
