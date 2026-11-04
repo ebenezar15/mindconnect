@@ -28,8 +28,11 @@ window.ROOMS_META=[
  {id:"pain",n:"14",grp:"Pain & suffering",label:"How pain works"},
  {id:"message",n:"15",grp:"Pain & suffering",label:"The message of pain"},
  {id:"birth",n:"16",grp:"Pain & suffering",label:"Childbirth without the curse"},
- {id:"rewire",n:"17",grp:"Practice",label:"Rewire studio"},
- {id:"refs",n:"18",grp:"Practice",label:"Sources & sister apps"}
+ {id:"dna",n:"17",grp:"DNA & blood",label:"DNA: the living script"},
+ {id:"inchrist",n:"18",grp:"DNA & blood",label:"In Adam, in Christ"},
+ {id:"blood",n:"19",grp:"DNA & blood",label:"The blood"},
+ {id:"rewire",n:"20",grp:"Practice",label:"Rewire studio"},
+ {id:"refs",n:"21",grp:"Practice",label:"Sources & sister apps"}
 ];
 const R=window.ROOMS={};
 
@@ -71,7 +74,10 @@ ${W.sec("The questions this app answers","Pick any door. Each room has a living 
    ["design","Was my body designed for sickness and death?","Eden to resurrection, repair systems, and how stress wears down telomeres."],
    ["pain","How is pain made? How does suffering form?","Animated pain pathway, a danger meter, and the layers of suffering."],
    ["message","If God isn't the author of pain, what is it saying?","What Jesus did with pain, Paul Brand's 'gift of pain', and decoding its message."],
-   ["birth","Is childbirth pain God's curse?","The Hebrew of Gen 3:16, the hormones of birth, and gentler delivery."]
+   ["birth","Is childbirth pain God's curse?","The Hebrew of Gen 3:16, the hormones of birth, and gentler delivery."],
+   ["dna","How is DNA formed, and what gets written into it?","Seven animated stages, epigenetic marks, and how the mind switches genes."],
+   ["inchrist","If Adam's inheritance is automatic, why not Christ's?","Two heads of humanity, the inside-out unfolding, and where the legal gospel fails."],
+   ["blood","How are blood, DNA and the mind connected?","A live blood vessel, the connection map, Scripture's blood threads and a myth check."]
  ].map(([h,b,s])=>`<a href="#${h}"><b>${b}</b><span>${s}</span></a>`).join("")}
 </div>`)}
 <section class="grid two">

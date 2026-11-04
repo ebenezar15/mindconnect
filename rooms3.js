@@ -295,5 +295,4 @@ ${W.sec("From Scripture to today: how birth pain was viewed",null,`
   out();cancelAnimationFrame(raf);raf=requestAnimationFrame(draw);
 }};
 
-window.MC_BOOT();
 })();

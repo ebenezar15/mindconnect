@@ -224,7 +224,7 @@ const WINDOW=[
 ];
 const RENEW=[["R","Recognise","Notice the feeling, body signal or reaction. 'Something's stirred.'"],["E","Expose","Ask: What am I believing? 'Who told you that?' (Gen 3:11)"],["N","Name the need","Behind the lie is a real need: safety, worth, love, rest."],["E","Exchange","Receive the Father's truth for the lie, with Scripture."],["W","Walk it out","One small action today that agrees with the truth."]];
 R.rewire={html:()=>`
-${W.head("Room 17 · Rewire studio","Your daily renewal toolkit","Check in, exchange lies for truth, breathe with Scripture, and track 40 days. Everything you save stays in this browser.")}
+${W.head("Room 20 · Rewire studio","Your daily renewal toolkit","Check in, exchange lies for truth, breathe with Scripture, and track 40 days. Everything you save stays in this browser.")}
 <section class="grid two">
  <div class="panel" style="display:flex;flex-direction:column;gap:12px"><span class="mono muted">Step 1 · Window of tolerance check-in</span><h3>How are you right now?</h3>
   <div class="pills" id="winPills">${WINDOW.map((w,i)=>`<button type="button" class="pill" data-i="${i}" aria-pressed="false">${w.k}</button>`).join("")}</div>
@@ -283,7 +283,7 @@ ${W.sec("Use cases: step-by-step plans","Practical, Scripture-backed plans for c
 
 /* ======================= 14 REFS ======================= */
 R.refs={html:()=>`
-${W.head("Room 18 · Sources & sister apps","Where this comes from","MindConnect sits alongside your Relational Gospel Atlas and Rewiring apps. Science claims are summarised from published research; where evidence is debated, the room says so.")}
+${W.head("Room 21 · Sources & sister apps","Where this comes from","MindConnect sits alongside your Relational Gospel Atlas and Rewiring apps. Science claims are summarised from published research; where evidence is debated, the room says so.")}
 <section class="grid">
  <a class="card click" href="${window.MC.LINKS.atlas}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><span class="tag g">Sister app</span><h4>Relational Gospel Atlas ↗</h4><p>Legal vs union lens across every major theme: Jesus as perfect theology, Adam undone, identity and heart healing, habits and help.</p></a>
  <a class="card click" href="${window.MC.LINKS.rewiring}" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><span class="tag l">Sister app</span><h4>Rewiring ↗</h4><p>Daily check-in, 90-day Regulated Mind plan, studies on belief formation, shame, new creation and union.</p></a>
@@ -318,6 +318,12 @@ ${W.sec("Research referenced",null,`<div class="panel">${W.list([
  "Dick-Read, G. <i>Childbirth Without Fear</i> (1942), with later critiques",
  "Postel, T. (2013), <i>Sexologies</i>: midwife survey on pleasurable birth experiences",
  "Buckley, S. (2015) <i>Hormonal Physiology of Childbearing</i> (Childbirth Connection)",
+ "Weaver, I. et al. (2004), <i>Nature Neuroscience</i> 7: epigenetic programming by maternal behaviour",
+ "Kaliman, P. et al. (2014), <i>Psychoneuroendocrinology</i> 40: rapid changes in HDACs and inflammatory gene expression in expert meditators",
+ "Yehuda, R. et al. (2016), <i>Biological Psychiatry</i>: Holocaust exposure and FKBP5 methylation in offspring (small sample; debated)",
+ "Lo, Y.M.D. et al. (1997) on cell-free fetal DNA in maternal plasma; Bianchi, D. et al. (1996) and later work on fetal microchimerism persisting for decades",
+ "Erlich, Y. & Zielinski, D. (2017), <i>Science</i>: DNA Fountain, about 215 petabytes per gram",
+ "Gregory of Nazianzus, Epistle 101: 'what is not assumed is not healed'; Irenaeus on recapitulation",
  "Simpson, J.Y. (1847) <i>Answer to the Religious Objections…</i>; Anaesthesia (2016) on later embellishment of that history; Mowczko, M. on ʿiṣṣābôn in Gen 3:16"])}</div>`)}
 ${W.sec("Theological voices behind the relational lens",null,`<p class="muted" style="max-width:70ch">Baxter Kruger, T.F. Torrance, Irenaeus (recapitulation), Brad Jersak, Greg Boyd, Brian Zahnd, Michael Ramsey ("God is Christlike and in him is no un-Christlikeness at all"), Francois du Toit, Curt Thompson (<i>Anatomy of the Soul</i>), and Bill Johnson on healing. Diverse voices; not all agree with each other on every point.</p>`)}
 <p class="note">MindConnect is an educational and devotional tool. It does not diagnose or treat any condition. Keep working with doctors, counsellors and your church community; God uses all of them.</p>
