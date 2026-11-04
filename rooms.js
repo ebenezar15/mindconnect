@@ -31,10 +31,12 @@ window.ROOMS_META=[
  {id:"dna",n:"17",grp:"DNA & blood",label:"DNA: the living script"},
  {id:"inchrist",n:"18",grp:"DNA & blood",label:"In Adam, in Christ"},
  {id:"blood",n:"19",grp:"DNA & blood",label:"The blood"},
- {id:"heal",n:"20",grp:"Self-healing",label:"The healing body"},
- {id:"mindheal",n:"21",grp:"Self-healing",label:"The healing mind"},
- {id:"rewire",n:"22",grp:"Practice",label:"Rewire studio"},
- {id:"refs",n:"23",grp:"Practice",label:"Sources & sister apps"}
+ {id:"seed",n:"20",grp:"DNA & blood",label:"The seed"},
+ {id:"web",n:"21",grp:"DNA & blood",label:"The living web"},
+ {id:"heal",n:"22",grp:"Self-healing",label:"The healing body"},
+ {id:"mindheal",n:"23",grp:"Self-healing",label:"The healing mind"},
+ {id:"rewire",n:"24",grp:"Practice",label:"Rewire studio"},
+ {id:"refs",n:"25",grp:"Practice",label:"Sources & sister apps"}
 ];
 const R=window.ROOMS={};
 
@@ -80,6 +82,8 @@ ${W.sec("The questions this app answers","Pick any door. Each room has a living 
    ["dna","How is DNA formed, and what gets written into it?","Seven animated stages, epigenetic marks, and how the mind switches genes."],
    ["inchrist","If Adam's inheritance is automatic, why not Christ's?","Two heads of humanity, the inside-out unfolding, and where the legal gospel fails."],
    ["blood","How are blood, DNA and the mind connected?","A live blood vessel, the connection map, Scripture's blood threads and a myth check."],
+   ["seed","What does the seed (sperm and egg) carry?","The sperm assembly line, three nested generations, mind → hormones → seed, and the biblical Seed."],
+   ["web","How do mind, body, seed, blood and DNA connect?","A tappable web of ten connections, one thought traced through all of them, and generational blessing."],
    ["heal","How did God design the body to heal itself?","Four animated healing phases, ten repair systems, and the mind's hand on the healing dial."],
    ["mindheal","Does the mind heal itself?","The mind's built-in healing tools, what gets it stuck, and Jesus healing Peter's memory."]
  ].map(([h,b,s])=>`<a href="#${h}"><b>${b}</b><span>${s}</span></a>`).join("")}
