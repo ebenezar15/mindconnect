@@ -102,7 +102,7 @@ function loopSVG(nodes,mode){
 
 /* ---------- router + learning engine ---------- */
 let current="home";
-const GROUP_C={"Begin":"--glory","The mind":"--violet","Mind & body":"--living","Fruit & roots":"--stress","Faith":"--glory","Pain & suffering":"--stress","Genetics":"--living","DNA & blood":"--violet","Self-healing":"--living","Practice":"--glory"};
+const GROUP_C={"Begin":"--glory","The mind":"--violet","Mind & body":"--living","Fruit & roots":"--stress","Faith":"--glory","Pain & suffering":"--stress","Genetics":"--living","The blood of Christ":"--stress","DNA & blood":"--violet","Self-healing":"--living","Practice":"--glory"};
 const meta=()=>window.ROOMS_META;
 const num=id=>String(meta().findIndex(r=>r.id===id)).padStart(2,"0");
 const done=()=>store.get("done",[]);

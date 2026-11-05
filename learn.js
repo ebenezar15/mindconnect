@@ -33,6 +33,8 @@ window.ROOMS_META=[
  {id:"blood",grp:"DNA & blood",label:"The blood"},
  {id:"seed",grp:"DNA & blood",label:"The seed"},
  {id:"web",grp:"DNA & blood",label:"The living web"},
+ {id:"christblood",grp:"The blood of Christ",label:"The blood of Christ"},
+ {id:"bloodpower",grp:"The blood of Christ",label:"The power of the blood"},
  {id:"heal",grp:"Self-healing",label:"The healing body"},
  {id:"mindheal",grp:"Self-healing",label:"The healing mind"},
  {id:"rewire",grp:"Practice",label:"Rewire studio"}
@@ -67,6 +69,8 @@ window.DATA.learn={
  blood:{v:"Lev 17:11",t:["Blood carries oxygen, hormones, immune cells and fragments of DNA: the mind's chemistry reaches every cell through it.","Jesus took real human flesh and blood from Mary to heal humanity from within.","Peace changes the river: lower blood pressure, calmer clotting, less inflammation."]},
  seed:{v:"1 Pet 1:23",t:["Sperm and egg carry DNA plus some marks of the parents' recent life.","Stress reaches the seed through the brain's reproductive hormone axis.","Scripture's Seed is Christ; the incorruptible seed of new birth is God's life, not DNA."]},
  web:{v:"Exod 20:5-6",t:["Mind, body, blood, seed and DNA form one living web held within the spirit.","Most of what passes to children comes through home, words and habits, not cells.","God's design tilts toward blessing: harm to 3–4 generations, love to a thousand."]},
+ christblood:{v:"Lev 17:11",t:["From Genesis to Revelation a scarlet thread shows God giving life, covering shame and binding himself in covenant.","In the relational reading the blood is God's own life given to us, not a payment to change his mind.","Forgiveness flows from God's heart, is revealed at the cross, and is received as release (aphesis)."]},
+ bloodpower:{v:"Heb 9:14",t:["What blood does in the body (gives life, cleanses, defends, heals, unites, renews) pictures what Christ's blood does in a person.","Christ's blood purifies the conscience and removes the 'consciousness of sins' that keeps the mind replaying failure.","The blood's power is a Person's self-giving love, received in trust and remembrance, not a magic formula."]},
  heal:{v:"Exod 15:26",t:["A wound heals through four phases: clotting, inflammation, rebuilding and remodelling.","Ten body systems renew themselves constantly, from gut lining (days) to skeleton (years).","Stress slows healing measurably; sleep, calm and connection speed it up."]},
  mindheal:{v:"Ps 23:3",t:["The mind heals in the same four phases: safety, feeling, meaning, integration.","God built in sleep, tears, words, writing, play and relationship as healing tools.","Trauma, shame, lies about God and isolation can block healing; safety and love unblock it."]},
  rewire:{v:"Rom 12:2",t:["Pick the problem you're facing for a guided step-by-step plan.","Use the tools: check-in, breath prayer, thought biopsy, truth cards, urge surfing, conflict repair.","Track your rhythm and mood; small daily repetitions rewire the most."]}
@@ -79,6 +83,7 @@ const PATHS=[
  {k:"Pain, suffering & birth",c:"--stress",d:"What pain is, what it says, and gentler birth.",r:["pain","message","birth"]},
  {k:"Genetics & inheritance",c:"--living",d:"How DNA is decided, how traits pass, what really reaches a child.",r:["genes","decided","traits","passes","behaviour"]},
  {k:"DNA, seed & generations",c:"--violet",d:"What we inherit and what we hand on.",r:["dna","seed","blood","web"]},
+ {k:"The blood of Christ",c:"--stress",d:"Covenant, forgiveness, redemption and a cleansed conscience.",r:["blood","christblood","bloodpower"]},
  {k:"Daily renewal practice",c:"--glory",d:"Tools for real-life problems.",r:["toxic","lab","rewire"]}
 ];
 
