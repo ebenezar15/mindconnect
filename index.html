@@ -206,16 +206,72 @@ textarea{min-height:84px;resize:vertical}
 .note{font-size:.85rem;color:var(--muted);border:1px dashed var(--line);border-radius:12px;padding:12px 14px}
 .kbd{font-family:var(--f-mono);font-size:.8rem;background:var(--bg3);padding:1px 6px;border-radius:5px}
 
+/* ---------- learning engine ---------- */
+[hidden]{display:none!important}
+#main:focus{outline:none}
+#readBar{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;height:3px;background:linear-gradient(90deg,var(--living),var(--glory));transform-origin:left;transform:scaleX(0);z-index:65;pointer-events:none}
+.rail-tools{display:flex;gap:6px;align-items:center}
+.searchbtn{flex:1;display:flex;justify-content:space-between;align-items:center;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:8px 11px;cursor:pointer;color:var(--muted);font-size:.86rem}
+.searchbtn:hover{border-color:var(--muted);color:var(--fg)}
+#railProg{display:flex;flex-direction:column;gap:6px}
+#railProg .bar{height:6px;border-radius:99px;background:var(--bg3);overflow:hidden}
+#railProg .bar i{display:block;height:100%;background:var(--living);border-radius:99px;transition:width .6s}
+.nav .grp{display:flex;align-items:center;gap:8px}
+.nav .grp i{width:8px;height:8px;border-radius:2px;display:inline-block}
+.mbar{display:none}
+.learn{display:flex;flex-direction:column;gap:14px;margin-top:-18px}
+.learn-take{border:1px solid var(--line);border-left:3px solid var(--glory);background:var(--bg2);border-radius:14px;padding:14px 18px;display:flex;flex-direction:column;gap:6px;max-width:860px}
+.learn-take ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:4px}
+.learn-take li{font-size:.95rem}
+.learn-meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.chip{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.04em;border:1px solid var(--line);border-radius:99px;padding:4px 10px;color:var(--muted)}
+.toc{position:sticky;top:calc(env(safe-area-inset-top,0px) + 4px);z-index:20;display:flex;gap:6px;overflow-x:auto;align-items:center;padding:8px 10px;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:12px;scrollbar-width:thin}
+.toc a{white-space:nowrap;text-decoration:none;color:var(--fg);font-size:.82rem;padding:5px 11px;border-radius:99px;background:var(--bg2);border:1px solid var(--line)}
+.toc a:hover{border-color:var(--glory)}
+.toc .mono{white-space:nowrap;font-size:.68rem}
+.sec{scroll-margin-top:72px}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:12px;border-top:1px solid var(--line);padding-top:22px}
+.pg{display:flex;flex-direction:column;gap:4px;padding:14px 16px;border:1px solid var(--line);border-radius:14px;text-decoration:none;color:var(--fg);background:var(--bg2);transition:border-color .2s,transform .2s}
+.pg:hover{border-color:var(--glory);transform:translateY(-2px)}
+.pg.next{text-align:right;background:var(--glory-soft);border-color:var(--glory)}
+.pg.next .mono{color:var(--glory)}
+.pg b{font-family:var(--f-display);font-weight:400;font-size:1.2rem}
+#palette{position:fixed;inset:0;z-index:95;background:rgba(0,0,0,.45);display:flex;justify-content:center;align-items:flex-start;padding-top:calc(10vh + env(safe-area-inset-top,0px));padding-left:16px;padding-right:16px}
+.pal{width:min(640px,100%);background:var(--bg2);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;max-height:76vh;overflow:hidden}
+.pal input{border:0;border-bottom:1px solid var(--line);border-radius:0;padding:16px 18px;font-size:1.05rem;background:transparent}
+.pal input:focus{outline:none}
+#palRes{overflow-y:auto;padding:8px;display:flex;flex-direction:column;gap:2px}
+.palItem{display:flex;flex-direction:column;gap:2px;text-align:left;border:0;background:transparent;border-radius:10px;padding:10px 12px;cursor:pointer}
+.palItem:hover,.palItem:focus-visible{background:var(--bg3)}
+.palItem span{font-size:.8rem;color:var(--muted);line-height:1.35}
+.mnav{flex-direction:column!important}
+.mnav a{white-space:normal!important}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:4px;border:1px solid var(--line);border-radius:14px;background:var(--bg2);position:sticky;top:calc(env(safe-area-inset-top,0px) + 4px);z-index:21}
+.tabs button{border:0;background:transparent;padding:9px 14px;border-radius:10px;cursor:pointer;color:var(--muted);white-space:nowrap;font-weight:600;font-size:.9rem}
+.tabs button[aria-selected="true"]{background:var(--glory);color:var(--bg)}
+.tile{display:flex;flex-direction:column;gap:6px;text-align:left;border:1px solid var(--line);background:var(--bg2);border-radius:14px;padding:14px;cursor:pointer;transition:border-color .2s,transform .2s;min-width:0}
+.tile:hover{transform:translateY(-2px);border-color:var(--muted)}
+.tile[aria-pressed="true"]{border-color:var(--glory);background:var(--glory-soft)}
+.tile b{font-size:.98rem}
+.tile span{font-size:.8rem;color:var(--muted)}
+.ring{--p:0}
+.word{font-family:serif;font-size:1.6rem;line-height:1.1}
+
 @media (max-width:900px){
   .app{grid-template-columns:1fr}
-  .rail{position:sticky;top:env(safe-area-inset-top,0px);height:auto;z-index:50;flex-direction:row;align-items:center;gap:12px;padding-block:10px;padding-right:max(16px,env(safe-area-inset-right,0px));border-right:0;border-bottom:1px solid var(--line);overflow-x:auto;overflow-y:hidden}
-  .brand small,.brand b,.nav .grp{display:none}
-  .rail-foot{order:3;margin:0;flex:none}.rail-foot span{display:none}
-  .nav{flex-direction:row;gap:4px}
-  .nav a{grid-template-columns:auto;white-space:nowrap;padding:7px 11px}
-  .nav a .n{display:none}
+  .rail{position:sticky;top:env(safe-area-inset-top,0px);height:auto;z-index:50;flex-direction:row;align-items:center;gap:10px;padding-block:10px;padding-right:max(16px,env(safe-area-inset-right,0px));border-right:0;border-bottom:1px solid var(--line);overflow:hidden}
+  .brand small,.brand b,#nav,#railProg,.rail-foot span,.searchbtn .kbd{display:none}
+  .mbar{display:block;flex:1;min-width:0;font-weight:600;font-size:.95rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .rail-tools{order:3}
+  .searchbtn{flex:none}
+  .rail-foot{display:none}
+  .searchbtn span:first-child{font-size:0}.searchbtn span:first-child::after{content:"Search";font-size:.86rem}
   .hero-in,.split{grid-template-columns:minmax(0,1fr)}
+  .toc{top:calc(env(safe-area-inset-top,0px) + 62px)}
+  .tabs{top:calc(env(safe-area-inset-top,0px) + 62px)}
+  .sec{scroll-margin-top:130px}
 }
+@media (min-width:901px){#menuBtn{display:none}}
 @media (max-width:560px){
   .compare{grid-template-columns:1fr}
   .meter{grid-template-columns:96px 1fr 34px}
@@ -230,6 +286,9 @@ textarea{min-height:84px;resize:vertical}
       <svg width="34" height="34" viewBox="0 0 34 34" aria-hidden="true"><circle cx="17" cy="17" r="15" fill="none" stroke="var(--glory)" stroke-width="1.5"/><path d="M9 20c3-8 6 4 8-4s5 4 8-2" fill="none" stroke="var(--living)" stroke-width="2" stroke-linecap="round"/><circle cx="17" cy="16" r="2.4" fill="var(--glory)"/></svg>
       <span><b>MindConnect</b><small>Mind · Brain · Body · Spirit</small></span>
     </a>
+    <span class="mbar" id="mTitle">MindConnect</span>
+    <div class="rail-tools"><button class="searchbtn" id="searchBtn" type="button" aria-label="Search all rooms"><span>Search rooms</span><span class="kbd">/</span></button><button class="chipbtn" id="menuBtn" type="button">Rooms</button></div>
+    <div id="railProg"></div>
     <nav class="nav" id="nav"></nav>
     <div class="rail-foot"><button class="chipbtn" id="themeBtn" type="button">Theme</button><span>Relational gospel lens</span></div>
   </aside>
@@ -238,6 +297,8 @@ textarea{min-height:84px;resize:vertical}
 <div class="scrim" id="scrim"></div>
 <aside class="drawer" id="drawer" aria-modal="true" role="dialog" aria-label="Details"><button class="x" id="drawerX" type="button" aria-label="Close">×</button><div id="drawerBody" style="display:flex;flex-direction:column;gap:16px"></div></aside>
 <div class="toast" id="toast" role="status"></div>
+<div id="readBar"></div>
+<div id="palette" hidden><div class="pal" role="dialog" aria-label="Search"><input id="palQ" type="text" placeholder="Search every room: a word, verse or topic…" autocomplete="off"><div id="palRes"></div></div></div>
 
 <script src="data.js"></script>
 <script src="app.js"></script>
@@ -246,4 +307,7 @@ textarea{min-height:84px;resize:vertical}
 <script src="rooms3.js"></script>
 <script src="rooms4.js"></script>
 <script src="rooms6.js"></script>
+<script src="learn.js"></script>
+<script src="rooms7.js"></script>
+<script src="studio.js"></script>
 <script src="rooms5.js"></script>

@@ -100,31 +100,76 @@ function loopSVG(nodes,mode){
   ${nd}</svg>`;
 }
 
-/* ---------- router ---------- */
+/* ---------- router + learning engine ---------- */
 let current="home";
-function nav(){
-  const rooms=window.ROOMS_META;let g="";
-  $("#nav").innerHTML=rooms.map(r=>{let h="";if(r.grp!==g){g=r.grp;h=`<div class="grp">${g}</div>`}return h+`<a href="#${r.id}" data-id="${r.id}"><span class="n">${r.n}</span><span>${r.label}</span></a>`}).join("");
+const GROUP_C={"Begin":"--glory","The mind":"--violet","Mind & body":"--living","Fruit & roots":"--stress","Faith":"--glory","Pain & suffering":"--stress","DNA & blood":"--violet","Self-healing":"--living","Practice":"--glory"};
+const meta=()=>window.ROOMS_META;
+const num=id=>String(meta().findIndex(r=>r.id===id)).padStart(2,"0");
+const done=()=>store.get("done",[]);
+function setDone(id,v){let d=done().filter(x=>x!==id);if(v)d.push(id);store.set("done",d);nav();updProgress()}
+function updProgress(){const total=meta().length-1,n=done().filter(id=>id!=="home").length;const el=$("#railProg");if(el)el.innerHTML=`<div class="row" style="justify-content:space-between;font-size:.78rem;color:var(--muted)"><span>Your progress</span><span class="mono">${n}/${total}</span></div><div class="bar"><i style="width:${n/total*100}%"></i></div>`}
+function navHTML(){let g="";const d=done();
+  return meta().map(r=>{let h="";if(r.grp!==g){g=r.grp;h=`<div class="grp"><i style="background:var(${GROUP_C[g]||"--glory"})"></i>${g}</div>`}
+   return h+`<a href="#${r.id}" data-id="${r.id}" ${r.id===current?'aria-current="page"':""}><span class="n">${d.includes(r.id)?'<svg width="14" height="14" viewBox="0 0 14 14" aria-label="completed"><circle cx="7" cy="7" r="7" fill="var(--living)"/><path d="M4 7.2l2 2 4-4.4" stroke="var(--bg)" stroke-width="1.8" fill="none"/></svg>':num(r.id)}</span><span>${r.label}</span></a>`}).join("")}
+function nav(){$("#nav").innerHTML=navHTML();const m=meta().find(r=>r.id===current);const t=$("#mTitle");if(t&&m)t.textContent=m.label}
+/* search index */
+let INDEX=null;
+function buildIndex(){if(INDEX)return INDEX;INDEX=[];const tmp=document.createElement("div");
+  for(const m of meta()){try{tmp.innerHTML=window.ROOMS[m.id].html();}catch(e){continue}
+   const L=(window.DATA.learn||{})[m.id]||{};
+   INDEX.push({id:m.id,label:m.label,grp:m.grp,sec:-1,h:m.label,text:((tmp.querySelector("h1")||{}).textContent||"")+" "+(L.t||[]).join(" ")});
+   $$(".sec",tmp).forEach((s,i)=>{const h=s.querySelector("h2");INDEX.push({id:m.id,label:m.label,grp:m.grp,sec:i,h:h?h.textContent:"",text:s.textContent.replace(/\s+/g," ")})})}
+  tmp.innerHTML="";return INDEX}
+function openSearch(){$("#palette").hidden=false;const inp=$("#palQ");inp.value="";palResults("");setTimeout(()=>inp.focus(),30)}
+function closeSearch(){$("#palette").hidden=true}
+function palResults(q){const box=$("#palRes");q=q.trim().toLowerCase();
+  if(!q){box.innerHTML=`<p class="muted" style="padding:10px 4px;font-size:.9rem">Try: <i>amygdala</i>, <i>sarx</i>, <i>panic</i>, <i>forgiveness</i>, <i>childbirth</i>, <i>telomere</i>, <i>soul</i>…</p>`+meta().slice(1).map(m=>`<button type="button" class="palItem" data-id="${m.id}" data-sec="-1"><b>${m.label}</b><span>${m.grp}</span></button>`).join("");bindPal();return}
+  const terms=q.split(/\s+/);const res=buildIndex().map(e=>{const hay=(e.h+" "+e.label+" "+e.text).toLowerCase();let sc=0;for(const t of terms){if(!hay.includes(t))return null;if(e.h.toLowerCase().includes(t))sc+=5;if(e.label.toLowerCase().includes(t))sc+=3;sc+=1}return{e,sc}}).filter(Boolean).sort((a,b)=>b.sc-a.sc).slice(0,14);
+  box.innerHTML=res.length?res.map(({e})=>{const k=e.text.toLowerCase().indexOf(terms[0]);const snip=k<0?"":e.text.slice(Math.max(0,k-50),k+90).trim();return`<button type="button" class="palItem" data-id="${e.id}" data-sec="${e.sec}"><b>${esc(e.sec<0?e.label:e.h)}</b><span>${esc(e.sec<0?e.grp:e.label)}${snip?" · …"+esc(snip)+"…":""}</span></button>`}).join(""):`<p class="muted" style="padding:10px 4px">No matches for “${esc(q)}”. Try a simpler word.</p>`;bindPal()}
+function bindPal(){$$("#palRes .palItem").forEach(b=>b.onclick=()=>{closeSearch();closeDrawer();const id=b.dataset.id,sec=+b.dataset.sec;if(id!==current)location.hash=id;else render();if(sec>=0)setTimeout(()=>{const el=$("#sec-"+sec);if(el)el.scrollIntoView({behavior:reduce?"auto":"smooth"})},150)})}
+document.addEventListener("keydown",e=>{if((e.key==="/"&&!/input|textarea|select/i.test(document.activeElement.tagName))||((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="k")){e.preventDefault();openSearch()}if(e.key==="Escape")closeSearch()});
+/* reading progress */
+window.addEventListener("scroll",()=>{const h=document.documentElement;const p=h.scrollTop/Math.max(1,h.scrollHeight-h.clientHeight);const b=$("#readBar");if(b)b.style.transform=`scaleX(${p})`},{passive:true});
+function learnBar(){const L=(window.DATA.learn||{})[current];const m=meta().find(r=>r.id===current);const secs=$$("#main .sec");
+  secs.forEach((s,i)=>s.id="sec-"+i);
+  const words=(($("#main .room")||{}).textContent||"").split(/\s+/).length;const mins=Math.max(2,Math.round(words/200));
+  const head=$("#main .room-head");if(!head)return;
+  const eb=$(".eyebrow",head);if(eb)eb.textContent=`Room ${num(current)} · ${m.grp}`;
+  const isDone=done().includes(current);
+  const box=document.createElement("div");box.className="learn";
+  box.innerHTML=`${L&&L.t?`<div class="learn-take"><span class="mono" style="color:var(--glory)">Key takeaways</span><ol>${L.t.map(t=>`<li>${t}</li>`).join("")}</ol></div>`:""}
+   <div class="learn-meta"><span class="chip">${mins} min read</span>${secs.length?`<span class="chip">${secs.length} sections</span>`:""}${L&&L.v?`<span class="chip"><span class="ref">${L.v}</span></span>`:""}
+   <button type="button" class="btn ${isDone?"teal":""}" id="doneBtn">${isDone?"Completed ✓":"Mark as complete"}</button></div>
+   ${secs.length>1?`<nav class="toc" aria-label="Sections in this room"><span class="mono muted">Jump to</span>${secs.map((s,i)=>`<a href="#${current}" data-sec="${i}">${esc((s.querySelector("h2")||{}).textContent||"Section "+(i+1))}</a>`).join("")}</nav>`:""}`;
+  head.after(box);
+  $("#doneBtn").onclick=()=>{const v=!done().includes(current);setDone(current,v);toast(v?"Marked complete":"Marked not complete");const b=$("#doneBtn");b.textContent=v?"Completed ✓":"Mark as complete";b.classList.toggle("teal",v)};
+  $$(".toc a",box).forEach(a=>a.onclick=e=>{e.preventDefault();$("#sec-"+a.dataset.sec).scrollIntoView({behavior:reduce?"auto":"smooth"})});
 }
 function render(){
   const id=(location.hash||"#home").slice(1);
   const R=window.ROOMS;current=R[id]?id:"home";
-  $$("#nav a").forEach(a=>{if(a.dataset.id===current)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current")});
+  nav();
   const main=$("#main");
   main.innerHTML=`<div class="room" id="room-${current}">${R[current].html()}${pager()}</div>`;
+  if(current!=="home")learnBar();
   if(R[current].mount)R[current].mount(main);
-  const a=$(`#nav a[data-id="${current}"]`);if(a&&a.scrollIntoView&&innerWidth<900)a.scrollIntoView({inline:"center",block:"nearest"});
-  store.set("last",current);
+  const a=$(`#nav a[data-id="${current}"]`);if(a&&a.scrollIntoView&&innerWidth>=900)a.scrollIntoView({block:"nearest"});
+  if(current!=="home")store.set("last",current);
+  updProgress();
 }
 function rerender(){render()}
 function pager(){
-  const m=window.ROOMS_META,i=m.findIndex(r=>r.id===current),p=m[i-1],n=m[i+1];
-  return `<nav class="row" style="justify-content:space-between;border-top:1px solid var(--line);padding-top:22px" aria-label="Next room">
-  ${p?`<a class="btn" href="#${p.id}">← ${p.label}</a>`:"<span></span>"}${n?`<a class="btn primary" href="#${n.id}">${n.label} →</a>`:""}</nav>`;
+  const m=meta(),i=m.findIndex(r=>r.id===current),p=m[i-1],n=m[i+1];
+  return `<nav class="pager" aria-label="Next room">
+  ${p?`<a class="pg" href="#${p.id}"><span class="mono muted">← Previous · ${num(p.id)}</span><b>${p.label}</b></a>`:"<span></span>"}${n?`<a class="pg next" href="#${n.id}"><span class="mono">Next · ${num(n.id)} →</span><b>${n.label}</b></a>`:""}</nav>`;
 }
-window.addEventListener("hashchange",()=>{render();window.scrollTo({top:0,behavior:reduce?"auto":"smooth"});$("#main").focus({preventScroll:true})});
+window.addEventListener("hashchange",()=>{render();window.scrollTo({top:0,behavior:"auto"});$("#main").focus({preventScroll:true})});
+$("#searchBtn").addEventListener("click",openSearch);
+$("#menuBtn").addEventListener("click",()=>openDrawer(`<h3>All rooms</h3><div class="row"><button type="button" class="btn" id="mSearch">Search everything</button><button type="button" class="btn" id="mTheme">Switch theme</button></div><nav class="nav mnav">${navHTML()}</nav>`,b=>{$$("a",b).forEach(a=>a.addEventListener("click",closeDrawer));$("#mSearch").onclick=()=>{closeDrawer();openSearch()};$("#mTheme").onclick=()=>{closeDrawer();$("#themeBtn").click()}}));
+$("#palette").addEventListener("click",e=>{if(e.target.id==="palette")closeSearch()});
+$("#palQ").addEventListener("input",e=>palResults(e.target.value));
+$("#palQ").addEventListener("keydown",e=>{if(e.key==="Enter"){const f=$("#palRes .palItem");if(f)f.click()}});
 
-window.MC={$,$$,esc,store,toast,openDrawer,closeDrawer,W,neuralCanvas,brainSVG,loopSVG,css,reduce,rerender};
-window.addEventListener("DOMContentLoaded",()=>{});
+window.MC={$,$$,esc,store,toast,openDrawer,closeDrawer,W,neuralCanvas,brainSVG,loopSVG,css,reduce,rerender,done,setDone,num,GROUP_C,openSearch};
 window.MC_BOOT=()=>{nav();render()};
 })();
