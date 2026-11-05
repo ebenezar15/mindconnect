@@ -102,7 +102,7 @@ function loopSVG(nodes,mode){
 
 /* ---------- router + learning engine ---------- */
 let current="home";
-const GROUP_C={"Begin":"--glory","The mind":"--violet","Mind & body":"--living","Fruit & roots":"--stress","Faith":"--glory","Pain & suffering":"--stress","DNA & blood":"--violet","Self-healing":"--living","Practice":"--glory"};
+const GROUP_C={"Begin":"--glory","The mind":"--violet","Mind & body":"--living","Fruit & roots":"--stress","Faith":"--glory","Pain & suffering":"--stress","Genetics":"--living","DNA & blood":"--violet","Self-healing":"--living","Practice":"--glory"};
 const meta=()=>window.ROOMS_META;
 const num=id=>String(meta().findIndex(r=>r.id===id)).padStart(2,"0");
 const done=()=>store.get("done",[]);
@@ -152,6 +152,7 @@ function render(){
   const main=$("#main");
   main.innerHTML=`<div class="room" id="room-${current}">${R[current].html()}${pager()}</div>`;
   if(current!=="home")learnBar();
+  if(window.MC_QUIZ&&current!=="home")window.MC_QUIZ(current);
   if(R[current].mount)R[current].mount(main);
   const a=$(`#nav a[data-id="${current}"]`);if(a&&a.scrollIntoView&&innerWidth>=900)a.scrollIntoView({block:"nearest"});
   if(current!=="home")store.set("last",current);
