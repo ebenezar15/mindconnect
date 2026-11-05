@@ -35,8 +35,7 @@ window.ROOMS_META=[
  {id:"web",n:"21",grp:"DNA & blood",label:"The living web"},
  {id:"heal",n:"22",grp:"Self-healing",label:"The healing body"},
  {id:"mindheal",n:"23",grp:"Self-healing",label:"The healing mind"},
- {id:"rewire",n:"24",grp:"Practice",label:"Rewire studio"},
- {id:"refs",n:"25",grp:"Practice",label:"Sources & sister apps"}
+ {id:"rewire",n:"24",grp:"Practice",label:"Rewire studio"}
 ];
 const R=window.ROOMS={};
 
